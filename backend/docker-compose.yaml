@@ -1,0 +1,12 @@
+
+services: 
+  app:
+    image: question-it-backend
+    build: 
+      context: .
+      dockerfile: dockerfile
+    ports:
+      - 3000:3000
+    volumes:
+      # Live reload (Development):
+      - .:/app
