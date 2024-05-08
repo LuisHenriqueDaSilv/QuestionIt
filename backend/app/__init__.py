@@ -1,6 +1,6 @@
 from flask import Flask
+from app.routes import router
+
 app = Flask(__name__)
 
-from app import routes
-
-print(__name__)
+app.register_blueprint(router)

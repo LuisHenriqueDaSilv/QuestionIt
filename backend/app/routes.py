@@ -1,6 +1,11 @@
-from app import app
+from flask import Blueprint
 
-@app.route("/")
+router = Blueprint(
+  'router',
+  __name__
+)
+
+@router.get("/")
 def index():
   return {
     "msg": "hello world"
