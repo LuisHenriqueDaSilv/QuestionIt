@@ -1,5 +1,7 @@
 from flask import Blueprint
 
+from app.controllers import QuestionControler
+
 router = Blueprint(
   'router',
   __name__
@@ -10,3 +12,7 @@ def index():
   return {
     "msg": "hello world"
   }
+
+@router.post("/question/create")
+def create():
+  return QuestionControler.create()
