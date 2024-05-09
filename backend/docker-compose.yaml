@@ -1,7 +1,21 @@
-
 services: 
+  postgresDB:
+    image: postgres:latest 
+    volumes:
+      - type: volume
+        source: postgres_data 
+        target: /var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=${SQLALCHEMY_DATABASE_USER}
+      - POSTGRES_PASSWORD=${SQLALCHEMY_DATABASE_PASSWORD}
+    env_file:
+      - .env
+    ports:
+      - "5432:5432"
+    networks:
+      - postgresnet
+
   app:
-    image: question-it-backend
     build: 
       context: .
       dockerfile: dockerfile
@@ -10,3 +24,16 @@ services:
     volumes:
       # Live reload (Development):
       - .:/app
+    env_file:
+      - .env
+    networks:
+      - postgresnet
+    depends_on:
+      - postgresDB
+
+volumes:
+  postgres_data:
+    name: postgres_data
+
+networks:
+  postgresnet: 
