@@ -2,6 +2,9 @@ import { FormEvent, useState } from 'react'
 
 import backendApi from '../../Services/axios'
 
+import './styles.css'
+
+
 export default function Question() {
 
   const [newQuestionTitleInputData, setNewQuestionTitleInputData] = useState<string>("")
