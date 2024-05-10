@@ -32,7 +32,9 @@ class ResponseController():
     return {"msg": "response created"}, 200
   
   @staticmethod
-  def list(questionId):
+  def list():
+
+    questionId = request.args.get("questionId")
     if not questionId:
       return {"msg": "required data *questionId* not provided"}, 400
     
