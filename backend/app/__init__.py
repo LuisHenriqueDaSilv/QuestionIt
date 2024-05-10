@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_migrate import Migrate
 from dotenv import load_dotenv, dotenv_values
+from flask_cors import CORS
 
 from app.routes import router
 from app.database import db
@@ -11,6 +12,7 @@ app = Flask(__name__)
 load_dotenv('.env')
 envConfigs = dotenv_values()
 app.config.from_mapping(envConfigs) # Settings from env var
+CORS(app)
 
 # Database/Database-migrations setup:
 db.init_app(app)
