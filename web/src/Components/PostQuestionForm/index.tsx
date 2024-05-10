@@ -37,7 +37,7 @@ export default function Question() {
         <input
           value={newQuestionDescriptionInputData}
           onInput={e => setNewQuestionDescriptionInputData(e.target.value)}
-          type="text" required
+          type="text"
         />
         <span>descrição da pergunta (opcional)</span>
       </div>
