@@ -4,7 +4,7 @@ from dotenv import load_dotenv, dotenv_values
 
 from app.routes import router
 from app.database import db
-from app.database.models import Question, Response #Used in migrations
+from app.database.models import Question, Answer #Used in migrations
 
 
 app = Flask(__name__)

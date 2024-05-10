@@ -1,16 +1,16 @@
 from flask import request, jsonify
 
-from app.database.models import Response, Question
+from app.database.models import Answer, Question
 from app.database import db
 
-class ResponseController():
+class AnswerController():
   
   @staticmethod
   def create():
-    responseContent = request.form.get("content")
+    answerContent = request.form.get("content")
     questionId = request.form.get("questionId")
 
-    if not responseContent:
+    if not answerContent:
       return {"msg": 'required data *content* not provided'}, 400
     if not questionId:
       return {"msg": 'required data *questionId* not provided'},400
@@ -20,16 +20,16 @@ class ResponseController():
       if not questionAnswered:
         return {"msg": "Question not found"}, 400
 
-      createdResponse = Response(
-        content=responseContent,
+      createdAnswer = Answer(
+        content=answerContent,
         question_id=questionId
       )
-      db.session.add(createdResponse)
+      db.session.add(createdAnswer)
       db.session.commit()
     except:
       return {"msg": "error in database"}, 500
     
-    return {"msg": "response created"}, 200
+    return {"msg": "answer created"}, 200
   
   @staticmethod
   def list():
@@ -39,11 +39,11 @@ class ResponseController():
       return {"msg": "required data *questionId* not provided"}, 400
     
     try:
-      responses = Response.query.filter_by(question_id=questionId)
+      answers = Answer.query.filter_by(question_id=questionId)
     except:
       return {"msg": "error in database"}, 500
     data = []
-    for response in responses:
-      data.append({"content": response.content, "id": response.id})
+    for answer in answers:
+      data.append({"content": answer.content, "id": answer.id})
     
     return data, 200

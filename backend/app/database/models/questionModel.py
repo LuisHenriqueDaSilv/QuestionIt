@@ -6,7 +6,7 @@ class Question(db.Model):
   title = db.Column(db.String)
   description = db.Column(db.String)
   
-  responses = db.relationship("Response", backref="Question")
+  answers = db.relationship("Answer", backref="Question")
 
   def __init__(self, title, description=""):
     self.title = title

@@ -1,6 +1,6 @@
 from flask import Blueprint
 
-from app.controllers import QuestionController, ResponseController
+from app.controllers import QuestionController, AnswerController
 
 router = Blueprint(
   'router',
@@ -23,10 +23,10 @@ def questionRead(id):
 def questionList():
   return QuestionController.list()
 
-@router.post("/response/create")
-def responseCreate():
-  return ResponseController.create()
+@router.post("/answer/create")
+def answerCreate():
+  return AnswerController.create()
 
-@router.get("/response/list")
-def responseList():
-  return ResponseController.list()
+@router.get("/answer/list")
+def answerList():
+  return AnswerController.list()
