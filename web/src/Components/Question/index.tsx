@@ -74,25 +74,23 @@ export default function Question(params: QuestionComponentParams) {
 
   return (
     <div className="question-container">
-      <div className="question-area">
-        <h1>{params.title}</h1>
-      </div>
+
+      <h1 className="question-title">{params.title}</h1>
 
       <AnimateHeight
         height={expanded ? 'auto' : 0}
         duration={500}
       >
-        <div className="description-container">
-          <p>{params.description}</p>
-        </div>
-        <div className="responses-container">
+        <p className="question-description">{params.description}</p>
+
+        <div className="answers-area">
           {
             answers.length > 0 ? (
-              <div className="responses-area">
+              <div className="answers-container">
                 {
                   answers.map(answer => {
                     return (
-                      <div className="response" key={answer.id}>
+                      <div className="answer" key={answer.id}>
                         <img src="/arrow.svg" alt="Seta para direita" />
                         <p>{answer.content}</p>
                       </div>
@@ -103,8 +101,8 @@ export default function Question(params: QuestionComponentParams) {
               </div>
             ) : null
           }
-
-          <form onSubmit={postAnswer} className="post-response-form">
+        
+          <form onSubmit={postAnswer} className="post-answer-form">
 
             <div className="floating-placeholder-input">
               <input 
@@ -122,9 +120,9 @@ export default function Question(params: QuestionComponentParams) {
             </button>
           </form>
         </div>
-
       </AnimateHeight>
-      <button onClick={handleExpand} >
+
+      <button className="expand-button" onClick={handleExpand} >
         {
           loadingAnswers ? (
             <img src="/loading.svg" alt="carregando" id="loading-icon" />

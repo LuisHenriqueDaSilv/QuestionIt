@@ -44,23 +44,28 @@ export default function App() {
 
   return (
     <div className="wrapper">
-      <h1>perguntas</h1>
-      <PostQuestionForm/>
-      <div className="questions-container">
-        {
-          questions? (
-            questions.map((question) => {
-              return (
-                <Question
+      <div className="app-container">
+        <h1>perguntas</h1>
+
+        <PostQuestionForm/>
+
+        <div className="questions-container">
+          {
+            questions? (
+              questions.map((question) => {
+                
+                return (
+                  <Question
                   title={question.title}
                   id={question.id} 
                   description={question.description}
                   key={question.id}
-                />
-              )
-            })
-          ): null
-        }
+                  />
+                )
+              })
+            ): null
+          }
+        </div>
       </div>
     </div>
   )

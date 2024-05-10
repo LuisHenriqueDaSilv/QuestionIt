@@ -28,7 +28,8 @@ export default function Question() {
 
   return (
     <form onSubmit={postNewQuestion} className="post-question-form">
-      <div className="post-question-input">
+
+      <div className="create-question-input">
         <input
           value={newQuestionTitleInputData}
           onInput={e => setNewQuestionTitleInputData(e.target.value)}
@@ -36,18 +37,22 @@ export default function Question() {
         />
         <span>faça sua pergunta</span>
       </div>
-      <div className="post-question-input">
+
+      <div className="create-question-input">
         <input
           value={newQuestionDescriptionInputData}
           onInput={e => setNewQuestionDescriptionInputData(e.target.value)}
-          type="text"
+          type="text" required
         />
-        <span>descrição da pergunta (opcional)</span>
+        <span>descrição da pergunta</span>
       </div>
+
       <button type="submit">
         <img alt="Interrogação" src="/question.svg" />
-        perguntar
+        <label>perguntar</label>
       </button>
+
     </form>
+
   )
 } 
