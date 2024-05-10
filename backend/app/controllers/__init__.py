@@ -1,1 +1,2 @@
-from .questionControler import QuestionControler
+from .questionController import QuestionController
+from .responseController import ResponseController
