@@ -1,13 +1,23 @@
 <div align="center">
   <img width="70%" src="https://github.com/LuisHenriqueDaSilv/QuestionIt/blob/main/git/Prints/desktop.png?raw=true"/>
   <h1>QuestionIt</h1>
-  <strong>Sistema de perguntas e respostas desenvolvido utilizando Flask no backend e ReactJs (Setup com ViteJS) no Fronted.</strong>
+  <strong>Sistema de perguntas e respostas</strong>
 </div>
 </br>
 
 ## 📚 | Informações do projeto
 
-<p> Este projeto foi desenvolvido com o intuito de praticar e exemplificar diversos conceitos do desenvolvimento web full-stack. Entre eles, gerenciamento de banco de dados utilizando migrations e ORM's, gerenciamento de containers docker com docker-compose, configurações iniciais de um servidor Postgres rodando em container, design responsivo em interfaces web e desenvolvimento de API em python.</p>
+<p> Este projeto foi desenvolvido com o intuito de praticar e exemplificar diversos conceitos do desenvolvimento web full-stack. Entre eles, gerenciamento de banco de dados utilizando migrations e ORM's, gerenciamento de containers docker com docker-compose, configurações iniciais de um servidor Postgres rodando em container, design responsivo(Mobile-first) em interfaces web e desenvolvimento de API's em Python.</p>
+
+## ⚙️ | Tecnologias, linguagens e ferramentas utilizadas:
+  - Typescript
+  - ReactJs
+  - Python
+  - Flask
+  - Sqlalchemy
+  - Postgres
+  - CSS
+  - Docker/Docker-compose
 
 ## ▶️ | Como iniciar
 **<p>Para executar o projeto é necessário ter instalado na sua máquina as seguintes ferramentas:</p>**
