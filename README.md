@@ -16,13 +16,39 @@
 - [Docker-Compose](https://docs.docker.com/compose/)
 - [git](https://git-scm.com/) Apenas para clonar o repositório (Opcional)
 
-</br>
-<p>Tendo todas as ferramentas necessárias instaladas em sua máquina, execute os seguintes comandos em seu terminal para rodar a aplicação em um ambiente de desenvolvimento/testes (Não produção) </p>
+<p>Tendo todas as ferramentas necessárias instaladas em sua máquina, siga o seguinte passo a passo para rodar a aplicação em um ambiente de desenvolvimento/testes (Não produção):</p>
 
+
+Precisamos ter o repositório em sua máquina local:
 ```bash
 git clone https://github.com/LuisHenriqueDaSilv/QuestionIt.git # Clona o respositório em sua maquina
+```
+
+Primeiro, configure as variáveis de ambiente do backend. Para isto, crie um arquivo com o nome ".env" dentro do diretório */QuestionId/backend* contendo as seguintes variáveis: 
+
+```bash
+PORT=3000
+DEBUG=true
+SQLALCHEMY_DATABASE_PASSWORD="senhapostgres"
+SQLALCHEMY_DATABASE_USER="usuariopostgres"
+SQLALCHEMY_DATABASE_URL="backend-postgresDB-1" #Nome do container do banco de dados
+# SQLALCHEMY_DATABASE_URL="localhost:5432"
+
+SQLALCHEMY_DATABASE_URI="postgresql+psycopg2://${SQLALCHEMY_DATABASE_USER}:${SQLALCHEMY_DATABASE_PASSWORD}@${SQLALCHEMY_DATABASE_URL}/"
+
+```
+(Lembre-se de trocar o usuário e senha do postgres para o desejado)
+
+Com as variáveis de ambiente configuradas, execute os seguintes comandos em seu terminal (Um a um)
+```bash
 cd ./QuestionIt/backend # Entra no diretório onde esta salvo o Backend
 docker compose up -d --build # Inicia o servidor Postgres (banco de dados) e a aplicação flask, como descrito no arquivo docker-compose.yaml
+
+#Migrations (Apenas na primeira execução)
+docker exec -it backend-app-1 flask db init # Inicia a pasta de migrations do flask-migrations
+docker exec -it backend-app-1 flask db  # Faz as migrações dos modelos para o banco de dados  
+docker exec -it backend-app-1 flask db upgrade # Escreve as migrações no banco de dados
+
 cd ../web/ #Entra no diretório onde esta salvo o frontend
 npm install # Instala todas as dependencias necessárias listadas no package.json
 npm run dev # Executa o servidor em ambiente de desenvolvimento
